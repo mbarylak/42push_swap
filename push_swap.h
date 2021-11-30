@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:21:51 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/11/26 19:33:40 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/11/30 20:30:59 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,15 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
+int		ft_min(t_list **a);
+int		ft_until_min(t_list **a, int min);
+void	ft_min_2_top(t_list **a, int pos);
 
 /* Parse & Pile up */
 
 void	ft_pile_up(int argc, char **argv, t_list **a);
 void	ft_add_a(char *s, t_list **a);
+void	ft_sort_pile(t_list **a, t_list **b);
 
 /* Error */
 
@@ -69,5 +73,11 @@ void	ft_rotate(t_list **a, t_list **b);
 void	ft_rev_rotate_a(t_list **a);
 void	ft_rev_rotate_b(t_list **b);
 void	ft_rev_rotate(t_list **a, t_list **b);
+
+/* Logic */
+
+void	ft_order_3(t_list **a);
+void	ft_order_5(t_list **a, t_list **b);
+void	ft_order_10(t_list **a, t_list **b);
 
 #endif

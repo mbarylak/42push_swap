@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:34:50 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/11/26 18:07:07 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/11/30 20:25:48 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_is_sorted(t_list **a)
 			break ;
 	}
 	if (aux->next == NULL)
-		ft_error();
+		exit(0);
 }
 
 void	ft_input_error(int argc, char **argv, int flag)

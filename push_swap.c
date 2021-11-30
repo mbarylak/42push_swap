@@ -6,11 +6,26 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:21:26 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/11/26 19:28:48 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/11/30 20:33:48 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_sort_pile(t_list **a, t_list **b)
+{
+	int	size;
+
+	size = ft_lstsize(*a);
+	if (size == 2)
+		ft_swap_a(a);
+	else if (size == 3)
+		ft_order_3(a);
+	else if (size > 3 && size <= 5)
+		ft_order_5(a, b);
+	else if (size > 5 && size <= 10)
+		ft_order_10(a, b);
+}
 
 void	ft_pile_up(int argc, char **argv, t_list **a)
 {
@@ -52,19 +67,20 @@ void	ft_add_a(char *s, t_list **a)
 int	main(int argc, char **argv)
 {
 	t_list	*a;
-	t_list	*aux;
+	t_list	*b;
+//	t_list	*aux;
 
 	if (argc == 1)
 		ft_error();
 	ft_input_error(argc, argv, 0);
 	ft_pile_up(argc, argv, &a);
 	ft_is_sorted(&a);
-	ft_rev_rotate_a(&a);
-	aux = a;
+	ft_sort_pile(&a, &b);
+/*	aux = a;
 	while (aux != NULL)
 	{
 		printf("%d\n", aux->n);
 		aux = aux->next;
-	}
+	}*/
 	return (0);
 }
