@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:21:26 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/11/30 20:33:48 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/12/15 21:19:42 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,28 @@ void	ft_add_a(char *s, t_list **a)
 	ft_lstadd_back(a, ft_lstnew(nbr));
 }
 
+void	ft_print_lst(t_list *a)
+{
+	while (a)
+	{
+		//write(1, "OK\n", 3);
+		printf("%d\n", a->n);
+		a = a->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
-//	t_list	*aux;
 
 	if (argc == 1)
 		ft_error();
 	ft_input_error(argc, argv, 0);
 	ft_pile_up(argc, argv, &a);
-	ft_is_sorted(&a);
-	ft_sort_pile(&a, &b);
-/*	aux = a;
-	while (aux != NULL)
-	{
-		printf("%d\n", aux->n);
-		aux = aux->next;
-	}*/
+	ft_is_sorted(&a);	
+	ft_revalue_lst(a);	
+	ft_sort_pile(&a, &b);	
+	ft_print_lst(a);	
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 19:24:52 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/11/29 17:32:03 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/12/15 20:23:49 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_issign(int c)
 
 int	ft_ismax(int sign, unsigned long long nbr)
 {
-	if (nbr > INT_MAX || nbr > (INT_MIN * -1))
+	if (nbr > 2147483647 || nbr > (-2147483648 * -1))
 		ft_error();
 	return (sign * nbr);
 }

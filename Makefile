@@ -6,14 +6,14 @@
 #    By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 20:56:23 by mbarylak          #+#    #+#              #
-#    Updated: 2021/11/30 19:31:45 by mbarylak         ###   ########.fr        #
+#    Updated: 2021/12/15 20:12:08 by mbarylak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRCS = utils.c utils2.c push_swap.c errors.c ft_atoi.c movements.c \
-	   movements2.c movements3.c logic.c utils3.c
+	   movements2.c movements3.c order_small.c utils3.c \
 
 OBJS = ${SRCS:.c=.o}
 

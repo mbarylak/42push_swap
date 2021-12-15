@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 20:08:22 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/11/30 18:04:32 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/12/15 20:27:39 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_lstnew(int content)
 	if (!list)
 		return (NULL);
 	list->n = content;
+	list->flag = 0;
 	list->next = NULL;
 	return (list);
 }
