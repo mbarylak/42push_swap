@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:15:03 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/12/15 21:29:18 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/12/16 22:05:49 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_order_5(t_list **a, t_list **b)
 	while (ft_lstsize(*a) != 3)
 	{
 		min = ft_min2(*a);
-		ft_2_the_top(a, ft_until_min(a, min), min);
+		ft_2_the_top(a, min);
 		ft_push_b(a, b);
 	}
 	ft_order_3(a);
@@ -76,7 +76,7 @@ void	ft_order_10(t_list **a, t_list **b)
 	while (ft_lstsize(*a) != 5)
 	{
 		min = ft_min2(*a);
-		ft_2_the_top(a, ft_until_min(a, min), min);
+		ft_2_the_top(a, min);
 		ft_push_b(a, b);
 	}
 	ft_order_5(a, b);

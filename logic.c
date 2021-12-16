@@ -1,71 +1,90 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   logic.c                                            :+:      :+:    :+:   */
+/*   order_big.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 17:15:03 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/11/30 20:32:14 by mbarylak         ###   ########.fr       */
+/*   Created: 2021/12/15 19:25:30 by mbarylak          #+#    #+#             */
+/*   Updated: 2021/12/16 22:26:22 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_order_3(t_list **a)
+int	*ft_pass_2_array(t_list **lst)
 {
+	int		*ar;
+	int		i;
+	int		size;
 	t_list	*aux;
 
-	aux = *a;
-	if (aux->next->n < aux->next->next->n && aux->next->next->n > aux->n && \
-			aux->n > aux->next->n)
-		ft_swap_a(a);
-	else if (aux->n > aux->next->n && aux->next->n > aux->next->next->n && \
-			aux->next->next->n < aux->n)
+	i = 0;
+	size = ft_lstsize(*lst);
+	aux = *lst;
+	ar = malloc(size + 1);
+	while (i < size)
 	{
-		ft_swap_a(a);
-		ft_rev_rotate_a(a);
+		ar[i] = aux->n;
+		i++;
+		aux = aux->next;
 	}
-	else if (aux->n > aux->next->n && aux->next->n < aux->next->next->n && \
-			aux->next->next->n < aux->n)
-		ft_rotate_a(a);
-	else if (aux->n < aux->next->n && aux->next->n > aux->next->next->n && \
-			aux->next->next->n > aux->n)
-	{
-		ft_swap_a(a);
-		ft_rotate_a(a);
-	}
-	else if (aux->n < aux->next->n && aux->next->n > aux->next->next->n && \
-			aux->next->next->n < aux->n)
-		ft_rev_rotate_a(a);
+	ar[i] = -1;
+	return (ar);
 }
 
-void	ft_order_5(t_list **a, t_list **b)
+int	ft_find_hold_top(int *ar, int inf, int sup)
 {
-	int	min;
+	int	i;
+	int	hold_top;
 
-	while (ft_lstsize(*a) != 3)
+	i = 0;
+	hold_top = 0;
+	while (ar[i])
 	{
-		min = ft_min(a);
-		ft_min_2_top(a, ft_until_min(a, min));
-		ft_push_b(a, b);
+		if (ar[i] >= inf && ar[i] <= sup)
+		{
+			hold_top = ar[i];
+			break ;
+		}
+		i++;
 	}
-	ft_order_3(a);
-	while (ft_lstsize(*b) > 0)
-		ft_push_a(a , b);
+	return (hold_top);
 }
 
-void	ft_order_10(t_list **a, t_list **b)
+int	ft_find_hold_bot(int *ar, int inf, int sup)
 {
-	int	min;
+	int	hold_bot;
+	int	i;
 
-	while (ft_lstsize(*a) != 5)
+	i = 0;
+	while (ar[i] != -1)
+		i++;
+	hold_bot = 0;
+	while (i > 0)
 	{
-		min = ft_min(a);
-		ft_min_2_top(a, ft_until_min(a, min));
-		ft_push_b(a, b);
+		if (ar[i] >= inf && ar[i] <= sup)
+		{
+			hold_bot = ar[i];
+			break ;
+		}
+		i--;
 	}
-	ft_order_5(a, b);
-	while (ft_lstsize(*b) > 0)
-		ft_push_a(a, b);
+	return (hold_bot);
+}
+
+int	ft_chunk_div(t_list **a)
+{
+	if (*a)
+	{
+		return (ft_lstsize(*a) / 5);
+	}
+	return (0);
+}
+
+int	ft_abs(int n)
+{
+	if (n < 0 && n > INT_MIN)
+		return (n * -1);
+	return (n);
 }

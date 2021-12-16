@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 17:56:18 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/12/15 20:28:05 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/12/16 22:08:46 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_min(t_list *a)
 	return (min);
 }
 
-int	ft_until_min(t_list **a, int min)
+int	ft_until_nbr(t_list **a, int nbr)
 {
 	int		pos;
 	t_list	*aux;
@@ -35,7 +35,7 @@ int	ft_until_min(t_list **a, int min)
 	pos = 0;
 	while (aux != NULL)
 	{
-		if (aux->n == min)
+		if (aux->n == nbr)
 			break ;
 		aux = aux->next;
 		pos++;
@@ -43,8 +43,11 @@ int	ft_until_min(t_list **a, int min)
 	return (pos);
 }
 
-void	ft_2_the_top(t_list **a, int pos, int n)
+void	ft_2_the_top(t_list **a, int n)
 {
+	int	pos;
+
+	pos = ft_until_nbr(a, n);
 	if (pos > (ft_lstsize(*a) / 2))
 	{
 		while ((*a)->n != n)
