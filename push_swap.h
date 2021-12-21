@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:21:51 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/12/16 22:13:01 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/12/21 20:51:12 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ void	ft_rev_rotate(t_list **a, t_list **b);
 void	ft_order_3(t_list **a);
 void	ft_order_5(t_list **a, t_list **b);
 void	ft_order_10(t_list **a, t_list **b);
-void	ft_order_100(t_list **a, t_list **b);
+void	ft_order_big(t_list **a, t_list **b);
 int		ft_find_hold_top(int *ar, int inf, int sup);
 int		ft_find_hold_bot(int *ar, int inf, int sup);
-int		ft_chunk_div(t_list **a);
+int		ft_chunk_div(t_list **a, int n);
 int		ft_top_or_bot(t_list **a, int hold_top, int hold_bot);
 void	ft_search_chunk(t_list **a, t_list **b, int inf, int sup);
 void	ft_fill_b(t_list **a, t_list **b, int size);

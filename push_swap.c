@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:21:26 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/12/16 22:24:50 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/12/21 20:59:57 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	ft_sort_pile(t_list **a, t_list **b)
 		ft_order_3(a);
 	else if (size > 3 && size <= 5)
 		ft_order_5(a, b);
-	else if (size > 5 && size < 10)
+	else if (size > 5 && size <= 10)
 		ft_order_10(a, b);
-	else if (size >= 10 && size <= 100)
-		ft_order_100(a, b);
+	else if (size > 10)
+		ft_order_big(a, b);
 }
 
 void	ft_pile_up(int argc, char **argv, t_list **a)
@@ -70,7 +70,6 @@ void	ft_print_lst(t_list *a)
 {
 	while (a)
 	{
-		//write(1, "OK\n", 3);
 		printf("%d\n", a->n);
 		a = a->next;
 	}
@@ -82,13 +81,11 @@ int	main(int argc, char **argv)
 	t_list	*b;
 
 	if (argc == 1)
-		ft_error();
+		exit(0);
 	ft_input_error(argc, argv, 0);
 	ft_pile_up(argc, argv, &a);
-	ft_is_sorted(&a);	
-	ft_revalue_lst(a);	
-	ft_sort_pile(&a, &b);	
-//	ft_print_lst(b);	
-	ft_print_lst(a);	
+	ft_is_sorted(&a);
+	ft_revalue_lst(a);
+	ft_sort_pile(&a, &b);
 	return (0);
 }

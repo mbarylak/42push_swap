@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 19:25:30 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/12/16 22:26:22 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/12/21 20:06:54 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int	ft_find_hold_bot(int *ar, int inf, int sup)
 	i = 0;
 	while (ar[i] != -1)
 		i++;
-	hold_bot = 0;
-	while (i > 0)
+	hold_bot = -2;
+	while (i >= 0)
 	{
 		if (ar[i] >= inf && ar[i] <= sup)
 		{
@@ -73,11 +73,11 @@ int	ft_find_hold_bot(int *ar, int inf, int sup)
 	return (hold_bot);
 }
 
-int	ft_chunk_div(t_list **a)
+int	ft_chunk_div(t_list **a, int n)
 {
 	if (*a)
 	{
-		return (ft_lstsize(*a) / 5);
+		return (ft_lstsize(*a) / n);
 	}
 	return (0);
 }

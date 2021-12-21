@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:49:51 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/12/16 22:26:20 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/12/21 20:47:11 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@ int	ft_top_or_bot(t_list **a, int hold_top, int hold_bot)
 	pos2 = ft_until_nbr(a, hold_bot);
 	pos1 = ft_abs(size - pos1);
 	pos2 = ft_abs(size - pos2);
-	if (pos1 == pos2)
-	{
-		if (hold_top < hold_bot)
-			return (hold_top);
-		else
-			return (hold_bot);
-	}
 	if (pos1 > pos2)
 		return (hold_top);
 	return (hold_bot);
@@ -61,7 +54,10 @@ void	ft_fill_b(t_list **a, t_list **b, int size)
 	int	inf;
 	int	sup;
 
-	c_size = ft_chunk_div(a);
+	if (ft_lstsize(*a) > 100)
+		c_size = ft_chunk_div(a, 13);
+	else
+		c_size = ft_chunk_div(a, 6);
 	i = size;
 	inf = 0;
 	sup = c_size - 1;
@@ -73,6 +69,8 @@ void	ft_fill_b(t_list **a, t_list **b, int size)
 		{
 			inf = inf + c_size;
 			sup = sup + c_size;
+			if (sup > size - 1)
+				sup = size - 1;
 		}
 		i--;
 	}
