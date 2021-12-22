@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 17:56:18 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/12/21 19:48:16 by mbarylak         ###   ########.fr       */
+/*   Updated: 2021/12/22 17:55:27 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void	ft_2_the_top(t_list **a, int n)
 	int	pos;
 
 	pos = ft_until_nbr(a, n);
-	if (pos > (ft_lstsize(*a) / 2))
+	if (pos == 1)
+		ft_swap_a(a);
+	else if (pos > (ft_lstsize(*a) / 2))
 	{
 		while ((*a)->n != n)
 			ft_rev_rotate_a(a);
