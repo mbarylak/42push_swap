@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:34:50 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/12/21 21:02:23 by mbarylak         ###   ########.fr       */
+/*   Updated: 2022/01/19 17:41:59 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_error(void)
 	exit(0);
 }
 
-void	ft_repcheck(t_list **a, int	nbr)
+void	ft_repcheck(t_list **a, int nbr)
 {
 	t_list	*aux;
 

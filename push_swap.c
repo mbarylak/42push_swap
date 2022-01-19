@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:21:26 by mbarylak          #+#    #+#             */
-/*   Updated: 2021/12/22 17:59:41 by mbarylak         ###   ########.fr       */
+/*   Updated: 2022/01/19 17:40:47 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	ft_add_a(char *s, t_list **a)
 	nbr = ft_atoi(s);
 	ft_repcheck(a, nbr);
 	ft_lstadd_back(a, ft_lstnew(nbr));
+	free(s);
 }
 
 void	ft_print_lst(t_list *a)
