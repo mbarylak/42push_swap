@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 20:04:48 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/01/25 18:17:58 by mbarylak         ###   ########.fr       */
+/*   Updated: 2022/01/26 18:26:26 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	ft_lstclear(t_list **lst)
 {
-	if (!lst)
-		return ;
-	while (*lst)
+	t_list *aux;
+	while (*lst != NULL)
 	{
-		free(*lst);
+		aux = *lst;
 		*lst = (*lst)->next;
+		free(aux);
 	}
-	*lst = NULL;
 }

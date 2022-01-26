@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 18:06:57 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/01/26 17:58:20 by mbarylak         ###   ########.fr       */
+/*   Updated: 2022/01/26 18:29:07 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
+
 
 	if (argc == 1)
 		exit(0);

@@ -6,7 +6,7 @@
 #    By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/24 18:30:43 by mbarylak          #+#    #+#              #
-#    Updated: 2022/01/25 20:21:04 by mbarylak         ###   ########.fr        #
+#    Updated: 2022/01/26 18:28:53 by mbarylak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CFLAGS = -Wall -Werror -Wextra
 all: ${NAME}
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -o $(NAME)
+	$(CC) $(OBJS) -o $(NAME) -g3 -fsanitize=address
 
 clean:
 	$(RM) ${OBJS}
