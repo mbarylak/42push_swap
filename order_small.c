@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   logic.c                                            :+:      :+:    :+:   */
+/*   order_small.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 17:15:03 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/01/19 17:12:56 by mbarylak         ###   ########.fr       */
+/*   Created: 2022/01/24 21:12:48 by mbarylak          #+#    #+#             */
+/*   Updated: 2022/01/25 19:35:29 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,6 @@ void	ft_order_3(t_list **a)
 		ft_rev_rotate_a(a);
 }
 
-int	ft_min2(t_list *a)
-{
-	int	min;
-
-	min = INT_MAX;
-	while (a)
-	{
-		if (min > a->n)
-			min = a->n;
-		a = a->next;
-	}
-	return (min);
-}
-
 void	ft_order_5(t_list **a, t_list **b)
 {
 	int	min;
@@ -61,7 +47,7 @@ void	ft_order_5(t_list **a, t_list **b)
 	while (ft_lstsize(*a) != 3)
 	{
 		min = ft_min2(*a);
-		ft_2_the_top(a, min);
+		ft_2_the_top_a(a, min);
 		ft_push_b(a, b);
 	}
 	ft_order_3(a);
@@ -76,7 +62,7 @@ void	ft_order_10(t_list **a, t_list **b)
 	while (ft_lstsize(*a) != 5)
 	{
 		min = ft_min2(*a);
-		ft_2_the_top(a, min);
+		ft_2_the_top_a(a, min);
 		ft_push_b(a, b);
 	}
 	ft_order_5(a, b);

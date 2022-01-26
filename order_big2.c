@@ -1,58 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   logic2.c                                           :+:      :+:    :+:   */
+/*   order_big2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 17:49:51 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/01/19 17:11:23 by mbarylak         ###   ########.fr       */
+/*   Created: 2022/01/25 20:13:17 by mbarylak          #+#    #+#             */
+/*   Updated: 2022/01/26 17:32:52 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_top_or_bot(t_list **a, int hold_top, int hold_bot)
-{
-	int	pos1;
-	int	pos2;
-	int	size;
-
-	size = ft_lstsize(*a) / 2;
-	pos1 = ft_until_nbr(a, hold_top);
-	pos2 = ft_until_nbr(a, hold_bot);
-	pos1 = ft_abs(size - pos1);
-	pos2 = ft_abs(size - pos2);
-	if (pos1 > pos2)
-		return (hold_top);
-	else if (pos1 == pos2)
-	{
-		if (hold_top <= hold_bot)
-			return (hold_top);
-		else
-			return (hold_bot);
-	}
-	return (hold_bot);
-}
-
-void	ft_search_chunk(t_list **a, t_list **b, int inf, int sup)
-{
-	int	hold_top;
-	int	hold_bot;
-	int	hold;
-	int	*ar;
-
-	if (ft_lstsize(*a) != 1)
-	{
-		ar = ft_pass_2_array(a);
-		hold_top = ft_find_hold_top(ar, inf, sup);
-		hold_bot = ft_find_hold_bot(ar, inf, sup);
-		hold = ft_top_or_bot(a, hold_top, hold_bot);
-		ft_2_the_top(a, hold);
-		free(ar);
-	}
-	ft_push_b(a, b);
-}
 
 void	ft_fill_b(t_list **a, t_list **b, int size)
 {
@@ -83,16 +41,20 @@ void	ft_fill_b(t_list **a, t_list **b, int size)
 	}
 }
 
-int	ft_max(t_list *b)
+void	ft_order_big(t_list **a, t_list **b)
 {
+	int	size;
+	int	i;
 	int	max;
 
-	max = INT_MIN;
-	while (b != NULL)
+	size = ft_lstsize(*a);
+	ft_fill_b(a, b, size);
+	i = 0;
+	while (i < size)
 	{
-		if (max < b->n)
-			max = b->n;
-		b = b->next;
+		max = ft_max(*b);
+		ft_2_the_top_b(b, max);
+		ft_push_a(a, b);
+		i++;
 	}
-	return (max);
 }

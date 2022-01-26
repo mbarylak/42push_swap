@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements3.c                                       :+:      :+:    :+:   */
+/*   lstutils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/26 19:27:38 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/01/24 17:58:59 by mbarylak         ###   ########.fr       */
+/*   Created: 2022/01/24 20:04:48 by mbarylak          #+#    #+#             */
+/*   Updated: 2022/01/25 18:17:58 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rev_rotate(t_list **a, t_list **b)
+void	ft_lstclear(t_list **lst)
 {
-	t_list	*last;
-	t_list	*aux;
-
-	if (ft_lstsize(*a) > 1 && ft_lstsize(*b))
+	if (!lst)
+		return ;
+	while (*lst)
 	{
-		aux = *a;
-		last = ft_lstlast(*a);
-		while (aux->next->next)
-			aux = aux->next;
-		aux->next = NULL;
-		ft_lstadd_front(a, last);
-		aux = *b;
-		last = ft_lstlast(*b);
-		while (aux->next->next)
-			aux = aux->next;
-		aux->next = NULL;
-		ft_lstadd_front(a, last);
-		write(1, "rrr\n", 4);
+		free(*lst);
+		*lst = (*lst)->next;
 	}
+	*lst = NULL;
 }

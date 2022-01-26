@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/24 20:56:23 by mbarylak          #+#    #+#              #
-#    Updated: 2022/01/19 17:42:35 by mbarylak         ###   ########.fr        #
+#    Created: 2022/01/24 18:30:43 by mbarylak          #+#    #+#              #
+#    Updated: 2022/01/25 20:21:04 by mbarylak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRCS = utils.c utils2.c push_swap.c errors.c ft_atoi.c movements.c \
-	   movements2.c movements3.c order_small.c utils3.c logic.c \
-	   logic2.c order_big.c \
+SRCS = utils.c utils2.c errors.c ft_atoi.c push_swap.c movements.c \
+	   movements2.c movements3.c lstutils.c lstutils2.c order_small.c \
+	   utils3.c order_big.c order_big2.c 
 
 OBJS = ${SRCS:.c=.o}
 
@@ -23,10 +23,10 @@ RM = rm -rf
 AR = ar rcs
 CFLAGS = -Wall -Werror -Wextra
 
-all: $(NAME)
+all: ${NAME}
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -o $(NAME) -g3 -fsanitize=address
+	$(CC) $(OBJS) -o $(NAME)
 
 clean:
 	$(RM) ${OBJS}

@@ -5,84 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 17:56:18 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/01/19 17:12:42 by mbarylak         ###   ########.fr       */
+/*   Created: 2022/01/25 18:24:45 by mbarylak          #+#    #+#             */
+/*   Updated: 2022/01/25 20:25:59 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_min(t_list *a)
+int	ft_max(t_list *b)
 {
-	int		min;
+	int	max;
 
-	min = INT_MAX;
-	while (a != NULL)
+	max = INT_MIN;
+	while (b != NULL)
 	{
-		if (min > a->n && a->flag != 1)
-			min = a->n;
-		a = a->next;
+		if (max < b->n)
+			max = b->n;
+		b = b->next;
 	}
-	return (min);
+	return (max);
 }
 
-int	ft_until_nbr(t_list **a, int nbr)
+int	ft_chunk_div(t_list **a, int n)
 {
-	int		pos;
-	t_list	*aux;
-
-	aux = *a;
-	pos = 0;
-	while (aux != NULL)
+	if (*a)
 	{
-		if (aux->n == nbr)
-			break ;
-		aux = aux->next;
-		pos++;
+		return (ft_lstsize(*a) / n);
 	}
-	return (pos);
+	return (0);
 }
 
-void	ft_2_the_top(t_list **a, int n)
+int	ft_abs(int n)
 {
-	int	pos;
-
-	pos = ft_until_nbr(a, n);
-	if (pos == 1)
-		ft_swap_a(a);
-	else if (pos > (ft_lstsize(*a) / 2))
-	{
-		while ((*a)->n != n)
-			ft_rev_rotate_a(a);
-	}
-	else
-	{
-		while ((*a)->n != n)
-			ft_rotate_a(a);
-	}
-}
-
-void	ft_change_value(t_list *a, int min, int value)
-{
-	while (a != NULL)
-	{
-		if ((a)->n == min && (a)->flag != 1)
-		{
-			(a)->n = value;
-			(a)->flag = 1;
-		}
-		(a) = (a)->next;
-	}
-}
-
-void	ft_revalue_lst(t_list *a)
-{
-	int	value;
-
-	value = 0;
-	while (value < ft_lstsize(a))
-	{
-		ft_change_value(a, ft_min(a), value);
-		value++;
-	}
+	if (n < 0 && n > INT_MIN)
+		return (n * -1);
+	return (n);
 }

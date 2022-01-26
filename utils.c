@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 18:45:28 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/01/19 17:28:07 by mbarylak         ###   ########.fr       */
+/*   Created: 2022/01/24 18:19:30 by mbarylak          #+#    #+#             */
+/*   Updated: 2022/01/26 17:30:02 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_substr(const char *s, int start, int len)
 	size = ft_strlen(&s[start]);
 	if (size < len)
 		len = size;
-	str = (char *) malloc(sizeof(char) * (len + 1));
+	str = (char *) malloc (sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
 	while (i < len && s[start])
@@ -65,4 +65,32 @@ char	*ft_substr(const char *s, int start, int len)
 	}
 	str[i] = '\0';
 	return (str);
+}
+
+int	ft_min(t_list *a)
+{
+	int	min;
+
+	min = INT_MAX;
+	while (a != NULL)
+	{
+		if (min > a->n && a->flag != 1)
+			min = a->n;
+		a = a->next;
+	}
+	return (min);
+}
+
+int	ft_min2(t_list *a)
+{
+	int	min;
+
+	min = INT_MAX;
+	while (a)
+	{
+		if (min > a->n)
+			min = a->n;
+		a = a->next;
+	}
+	return (min);
 }

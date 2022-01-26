@@ -5,61 +5,89 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 20:08:22 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/01/19 17:12:21 by mbarylak         ###   ########.fr       */
+/*   Created: 2022/01/24 20:51:25 by mbarylak          #+#    #+#             */
+/*   Updated: 2022/01/26 17:30:18 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(int content)
+void	ft_change_value(t_list *a, int min, int value)
 {
-	t_list	*list;
-
-	list = malloc (sizeof(t_list));
-	if (!list)
-		return (NULL);
-	list->n = content;
-	list->flag = 0;
-	list->next = NULL;
-	return (list);
+	while (a != NULL)
+	{
+		if (a->n == min && a->flag != 1)
+		{
+			a->n = value;
+			a->flag = 1;
+		}
+		a = a->next;
+	}
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_revalue_lst(t_list *a)
 {
-	if (*lst)
-		ft_lstlast(*lst)->next = new;
+	int	value;
+
+	value = 0;
+	while (value < ft_lstsize(a))
+	{
+		ft_change_value(a, ft_min(a), value);
+		value++;
+	}
+}
+
+int	ft_until_nbr(t_list **a, int nbr)
+{
+	t_list	*aux;
+	int		pos;
+
+	aux = *a;
+	pos = 0;
+	while (aux != NULL)
+	{
+		if (aux->n == nbr)
+			break ;
+		aux = aux->next;
+		pos++;
+	}
+	return (pos);
+}
+
+void	ft_2_the_top_a(t_list **a, int n)
+{
+	int	pos;
+
+	pos = ft_until_nbr(a, n);
+	if (pos == 1)
+		ft_swap_a(a);
+	else if (pos > (ft_lstsize(*a) / 2))
+	{
+		while ((*a)->n != n)
+			ft_rev_rotate_a(a);
+	}
 	else
-		*lst = new;
-}
-
-void	ft_lstadd_front(t_list **lst, t_list *new)
-{
-	if (lst && new)
 	{
-		new->next = *lst;
-		*lst = new;
+		while ((*a)->n != n)
+			ft_rotate_a(a);
 	}
 }
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_2_the_top_b(t_list **b, int n)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
-}
+	int	pos;
 
-int	ft_lstsize(t_list *lst)
-{
-	int	i;
-
-	i = 0;
-	while (lst != NULL)
+	pos = ft_until_nbr(b, n);
+	if (pos == 1)
+		ft_swap_b(b);
+	else if (pos > (ft_lstsize(*b) / 2))
 	{
-		lst = lst ->next;
-		i++;
+		while ((*b)->n != n)
+			ft_rev_rotate_b(b);
 	}
-	return (i);
+	else
+	{
+		while ((*b)->n != n)
+			ft_rotate_b(b);
+	}
 }
